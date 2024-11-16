@@ -1,0 +1,53 @@
+# Project exclude paths
+/target/
+/venv_sd/
+/.idea/
+/attacks*/
+
+/.vscode/
+*.jar
+
+
+## General build artifacts
+*.o
+*.obj
+*.exe
+examples/*/Debug/*
+examples/*/Release/*
+examples/*/x64/*
+
+## Visual Studio artifacts
+.vs
+ipch
+*.opensdf
+*.log
+*.pdb
+*.ilk
+*.user
+*.sdf
+*.suo
+*.VC.db
+*.VC.VC.opendb
+
+# Distribution / packaging 
+.Python build/ 
+develop-eggs/ 
+dist/ 
+downloads/ 
+eggs/ 
+.eggs/ 
+lib/ 
+lib64/ 
+parts/ 
+sdist/ 
+var/ 
+wheels/ 
+*.egg-info/ 
+.installed.cfg 
+*.egg 
+*.manifest 
+*.spec 
+
+## OSX artifacts
+.DS_Store
+
