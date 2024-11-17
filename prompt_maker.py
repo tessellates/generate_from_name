@@ -13,6 +13,8 @@ def prompt(keywords, name):
     pipe = DiffusionPipeline.from_pretrained("UnfilteredAI/NSFW-Flux-v1")
     if platform.system() == "Darwin":
         pipe.to("mps")
+    else:
+        pipe.to("cuda" if torch.cuda.is_available() else "cpu")
 
     # Function to generate an image
     def generate_image(prompt):
