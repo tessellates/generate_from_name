@@ -1,6 +1,7 @@
 import torch
 from diffusers import StableDiffusionPipeline
 import sys
+import platform
 
 def prompt(keywords, name):
     print(f"started: {keywords}, {name}")
@@ -10,15 +11,17 @@ def prompt(keywords, name):
     from diffusers import DiffusionPipeline
 
     pipe = DiffusionPipeline.from_pretrained("UnfilteredAI/NSFW-Flux-v1")
-    pipe.to("mps")
-    # Move the pipeline to MPS for GPU processing
+    if platform.system() == "Darwin":
+        pipe.to("mps")
+
     # Function to generate an image
     def generate_image(prompt):
-        image = pipe(prompt, 208, 272).images[0]
+        #image = pipe(prompt, 208, 272).images[0]
+        image = pipe(prompt, 512, 512).images[0]
         return image
 
     # Generate an example image
-    prompt = f"{keywords}, hand drawn, colorfull"
+    prompt = f"{keywords}, hand drawn, colorfull, matching colors"
     image = generate_image(prompt)
 
     # Save the generated image
@@ -31,7 +34,6 @@ def main():
         sys.exit(1)
 
     # Get arguments from the command line
-    image_path = sys.argv[1]
     keywords = sys.argv[1]
     name = sys.argv[2]
 
